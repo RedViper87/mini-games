@@ -1,0 +1,360 @@
+<!-- A mobile sized tic-tac-toe web app using HTML/CSS/JS by Shane Parten for Game Day Companion -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic-Tac-Toe</title>
+</head>
+<style>
+/* CSS Styles go here */
+body{
+    background-image: url(https://static.wixstatic.com/media/5a3c7a_834a669a553346f78765eea7aad2d5ad~mv2.png);
+    background-position-x: center;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-size: 280px 420px;
+}
+select{
+    background: none;
+    border: none;
+}
+
+/* Class Styles */
+.buttonRow{
+    margin-top: 75px;
+}
+.flexRow{
+    display: flex;
+    justify-content: center;
+}
+.grid-container-container{
+    /* border: 1px solid red !important; */
+    display: flex;
+    justify-content: center;
+    margin-top: 29px;
+}
+.grid-container{
+    /* border: 1px solid black !important; */
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 11px;
+    justify-content: center;
+    position: absolute;
+}
+.grid-item{
+    /* border: 1px solid red !important; */
+    height: 68px;
+    width: 68px;
+}
+.piece{
+    background: none;
+    border: none;
+}
+.piece:hover{
+    background: rgba(255,255,255,0.2);
+}
+.resetButton{
+    background-color: lightgray;
+    height: 25px;
+    width: 100px;
+}
+
+/* ID Styles */
+
+</style>
+<body>
+    <!-- Main body elements -->
+<div class="flexRow buttonRow">
+    <button class="resetButton" onclick="resetBoard()">Reset Board</button>
+</div>
+<div class="grid-container-container">
+    <div class="grid-container">
+        <div class="grid-item">
+            <img id="QM1" src="https://static.wixstatic.com/media/5a3c7a_904d175cdd49469eb1a565943fbfa229~mv2.png" alt="tic-tac-toe ?1" width="68" height="68">
+        </div>
+        <div class="grid-item">
+            <img id="QM2" src="https://static.wixstatic.com/media/5a3c7a_904d175cdd49469eb1a565943fbfa229~mv2.png" alt="tic-tac-toe ?2" width="68" height="68">
+        </div>
+        <div class="grid-item">
+            <img id="QM3" src="https://static.wixstatic.com/media/5a3c7a_904d175cdd49469eb1a565943fbfa229~mv2.png" alt="tic-tac-toe ?3" width="68" height="68">
+        </div>
+        <div class="grid-item">
+            <img id="QM4" src="https://static.wixstatic.com/media/5a3c7a_904d175cdd49469eb1a565943fbfa229~mv2.png" alt="tic-tac-toe ?4" width="68" height="68">
+        </div>
+        <div class="grid-item">
+            <img id="QM5" src="https://static.wixstatic.com/media/5a3c7a_904d175cdd49469eb1a565943fbfa229~mv2.png" alt="tic-tac-toe ?5" width="68" height="68">
+        </div>
+        <div class="grid-item">
+            <img id="QM6" src="https://static.wixstatic.com/media/5a3c7a_904d175cdd49469eb1a565943fbfa229~mv2.png" alt="tic-tac-toe ?6" width="68" height="68">
+        </div>
+        <div class="grid-item">
+            <img id="QM7" src="https://static.wixstatic.com/media/5a3c7a_904d175cdd49469eb1a565943fbfa229~mv2.png" alt="tic-tac-toe ?7" width="68" height="68">
+        </div>
+        <div class="grid-item">
+            <img id="QM8" src="https://static.wixstatic.com/media/5a3c7a_904d175cdd49469eb1a565943fbfa229~mv2.png" alt="tic-tac-toe ?8" width="68" height="68">
+        </div>
+        <div class="grid-item">
+            <img id="QM9" src="https://static.wixstatic.com/media/5a3c7a_904d175cdd49469eb1a565943fbfa229~mv2.png" alt="tic-tac-toe ?9" width="68" height="68">
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-item">
+            <img id="O1" src="https://static.wixstatic.com/media/5a3c7a_7f356d5b3b8a4234a8cb92273e7ae46e~mv2.png" alt="tic-tac-toe O1" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="O2" src="https://static.wixstatic.com/media/5a3c7a_7f356d5b3b8a4234a8cb92273e7ae46e~mv2.png" alt="tic-tac-toe O2" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="O3" src="https://static.wixstatic.com/media/5a3c7a_7f356d5b3b8a4234a8cb92273e7ae46e~mv2.png" alt="tic-tac-toe O3" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="O4" src="https://static.wixstatic.com/media/5a3c7a_7f356d5b3b8a4234a8cb92273e7ae46e~mv2.png" alt="tic-tac-toe O4" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="O5" src="https://static.wixstatic.com/media/5a3c7a_7f356d5b3b8a4234a8cb92273e7ae46e~mv2.png" alt="tic-tac-toe O5" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="O6" src="https://static.wixstatic.com/media/5a3c7a_7f356d5b3b8a4234a8cb92273e7ae46e~mv2.png" alt="tic-tac-toe O6" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="O7" src="https://static.wixstatic.com/media/5a3c7a_7f356d5b3b8a4234a8cb92273e7ae46e~mv2.png" alt="tic-tac-toe O7" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="O8" src="https://static.wixstatic.com/media/5a3c7a_7f356d5b3b8a4234a8cb92273e7ae46e~mv2.png" alt="tic-tac-toe O8" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="O9" src="https://static.wixstatic.com/media/5a3c7a_7f356d5b3b8a4234a8cb92273e7ae46e~mv2.png" alt="tic-tac-toe O9" width="68" height="68" hidden>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-item">
+            <img id="X1" src="https://static.wixstatic.com/media/5a3c7a_60c03d2f563b41a8805e48587e2e8d56~mv2.png" alt="tic-tac-toe X1" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="X2" src="https://static.wixstatic.com/media/5a3c7a_60c03d2f563b41a8805e48587e2e8d56~mv2.png" alt="tic-tac-toe X2" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="X3" src="https://static.wixstatic.com/media/5a3c7a_60c03d2f563b41a8805e48587e2e8d56~mv2.png" alt="tic-tac-toe X3" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="X4" src="https://static.wixstatic.com/media/5a3c7a_60c03d2f563b41a8805e48587e2e8d56~mv2.png" alt="tic-tac-toe X4" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="X5" src="https://static.wixstatic.com/media/5a3c7a_60c03d2f563b41a8805e48587e2e8d56~mv2.png" alt="tic-tac-toe X5" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="X6" src="https://static.wixstatic.com/media/5a3c7a_60c03d2f563b41a8805e48587e2e8d56~mv2.png" alt="tic-tac-toe X6" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="X7" src="https://static.wixstatic.com/media/5a3c7a_60c03d2f563b41a8805e48587e2e8d56~mv2.png" alt="tic-tac-toe X7" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="X8" src="https://static.wixstatic.com/media/5a3c7a_60c03d2f563b41a8805e48587e2e8d56~mv2.png" alt="tic-tac-toe X8" width="68" height="68" hidden>
+        </div>
+        <div class="grid-item">
+            <img id="X9" src="https://static.wixstatic.com/media/5a3c7a_60c03d2f563b41a8805e48587e2e8d56~mv2.png" alt="tic-tac-toe X9" width="68" height="68" hidden>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <button id="button1" class="grid-item piece" onclick="button1click()"></button>
+        <button id="button2" class="grid-item piece" onclick="button2click()"></button>
+        <button id="button3" class="grid-item piece" onclick="button3click()"></button>
+        <button id="button4" class="grid-item piece" onclick="button4click()"></button>
+        <button id="button5" class="grid-item piece" onclick="button5click()"></button>
+        <button id="button6" class="grid-item piece" onclick="button6click()"></button>
+        <button id="button7" class="grid-item piece" onclick="button7click()"></button>
+        <button id="button8" class="grid-item piece" onclick="button8click()"></button>
+        <button id="button9" class="grid-item piece" onclick="button9click()"></button>
+    </div>
+</div>
+    
+</body>
+<script>
+// JavaScript functions go here
+function button1click() {
+    var qm = document.getElementById("QM1")
+    var  o = document.getElementById("O1")
+    var  x = document.getElementById("X1")
+    if (!qm.hidden) {
+        qm.setAttribute("hidden", "hidden")
+        o.removeAttribute("hidden")
+    }
+    else if (!o.hidden) {
+        o.setAttribute("hidden", "hidden")
+        x.removeAttribute("hidden")
+    }
+    else if (!x.hidden) {
+        x.setAttribute("hidden", "hidden")
+        qm.removeAttribute("hidden")
+    }
+}
+function button2click() {
+    var qm = document.getElementById("QM2")
+    var  o = document.getElementById("O2")
+    var  x = document.getElementById("X2")
+    if (!qm.hidden) {
+        qm.setAttribute("hidden", "hidden")
+        o.removeAttribute("hidden")
+    }
+    else if (!o.hidden) {
+        o.setAttribute("hidden", "hidden")
+        x.removeAttribute("hidden")
+    }
+    else if (!x.hidden) {
+        x.setAttribute("hidden", "hidden")
+        qm.removeAttribute("hidden")
+    }
+}
+function button3click() {
+    var qm = document.getElementById("QM3")
+    var  o = document.getElementById("O3")
+    var  x = document.getElementById("X3")
+    if (!qm.hidden) {
+        qm.setAttribute("hidden", "hidden")
+        o.removeAttribute("hidden")
+    }
+    else if (!o.hidden) {
+        o.setAttribute("hidden", "hidden")
+        x.removeAttribute("hidden")
+    }
+    else if (!x.hidden) {
+        x.setAttribute("hidden", "hidden")
+        qm.removeAttribute("hidden")
+    }
+}
+function button4click() {
+    var qm = document.getElementById("QM4")
+    var  o = document.getElementById("O4")
+    var  x = document.getElementById("X4")
+    if (!qm.hidden) {
+        qm.setAttribute("hidden", "hidden")
+        o.removeAttribute("hidden")
+    }
+    else if (!o.hidden) {
+        o.setAttribute("hidden", "hidden")
+        x.removeAttribute("hidden")
+    }
+    else if (!x.hidden) {
+        x.setAttribute("hidden", "hidden")
+        qm.removeAttribute("hidden")
+    }
+}
+function button5click() {
+    var qm = document.getElementById("QM5")
+    var  o = document.getElementById("O5")
+    var  x = document.getElementById("X5")
+    if (!qm.hidden) {
+        qm.setAttribute("hidden", "hidden")
+        o.removeAttribute("hidden")
+    }
+    else if (!o.hidden) {
+        o.setAttribute("hidden", "hidden")
+        x.removeAttribute("hidden")
+    }
+    else if (!x.hidden) {
+        x.setAttribute("hidden", "hidden")
+        qm.removeAttribute("hidden")
+    }
+}
+function button6click() {
+    var qm = document.getElementById("QM6")
+    var  o = document.getElementById("O6")
+    var  x = document.getElementById("X6")
+    if (!qm.hidden) {
+        qm.setAttribute("hidden", "hidden")
+        o.removeAttribute("hidden")
+    }
+    else if (!o.hidden) {
+        o.setAttribute("hidden", "hidden")
+        x.removeAttribute("hidden")
+    }
+    else if (!x.hidden) {
+        x.setAttribute("hidden", "hidden")
+        qm.removeAttribute("hidden")
+    }
+}
+function button7click() {
+    var qm = document.getElementById("QM7")
+    var  o = document.getElementById("O7")
+    var  x = document.getElementById("X7")
+    if (!qm.hidden) {
+        qm.setAttribute("hidden", "hidden")
+        o.removeAttribute("hidden")
+    }
+    else if (!o.hidden) {
+        o.setAttribute("hidden", "hidden")
+        x.removeAttribute("hidden")
+    }
+    else if (!x.hidden) {
+        x.setAttribute("hidden", "hidden")
+        qm.removeAttribute("hidden")
+    }
+}
+function button8click() {
+    var qm = document.getElementById("QM8")
+    var  o = document.getElementById("O8")
+    var  x = document.getElementById("X8")
+    if (!qm.hidden) {
+        qm.setAttribute("hidden", "hidden")
+        o.removeAttribute("hidden")
+    }
+    else if (!o.hidden) {
+        o.setAttribute("hidden", "hidden")
+        x.removeAttribute("hidden")
+    }
+    else if (!x.hidden) {
+        x.setAttribute("hidden", "hidden")
+        qm.removeAttribute("hidden")
+    }
+}
+function button9click() {
+    var qm = document.getElementById("QM9")
+    var  o = document.getElementById("O9")
+    var  x = document.getElementById("X9")
+    if (!qm.hidden) {
+        qm.setAttribute("hidden", "hidden")
+        o.removeAttribute("hidden")
+    }
+    else if (!o.hidden) {
+        o.setAttribute("hidden", "hidden")
+        x.removeAttribute("hidden")
+    }
+    else if (!x.hidden) {
+        x.setAttribute("hidden", "hidden")
+        qm.removeAttribute("hidden")
+    }
+}
+
+function resetBoard() {
+    document.getElementById("QM1").removeAttribute("hidden")
+    document.getElementById("O1").setAttribute("hidden", "hidden")
+    document.getElementById("X1").setAttribute("hidden", "hidden")
+    document.getElementById("QM2").removeAttribute("hidden")
+    document.getElementById("O2").setAttribute("hidden", "hidden")
+    document.getElementById("X2").setAttribute("hidden", "hidden")
+    document.getElementById("QM3").removeAttribute("hidden")
+    document.getElementById("O3").setAttribute("hidden", "hidden")
+    document.getElementById("X3").setAttribute("hidden", "hidden")
+    document.getElementById("QM4").removeAttribute("hidden")
+    document.getElementById("O4").setAttribute("hidden", "hidden")
+    document.getElementById("X4").setAttribute("hidden", "hidden")
+    document.getElementById("QM5").removeAttribute("hidden")
+    document.getElementById("O5").setAttribute("hidden", "hidden")
+    document.getElementById("X5").setAttribute("hidden", "hidden")
+    document.getElementById("QM6").removeAttribute("hidden")
+    document.getElementById("O6").setAttribute("hidden", "hidden")
+    document.getElementById("X6").setAttribute("hidden", "hidden")
+    document.getElementById("QM7").removeAttribute("hidden")
+    document.getElementById("O7").setAttribute("hidden", "hidden")
+    document.getElementById("X7").setAttribute("hidden", "hidden")
+    document.getElementById("QM8").removeAttribute("hidden")
+    document.getElementById("O8").setAttribute("hidden", "hidden")
+    document.getElementById("X8").setAttribute("hidden", "hidden")
+    document.getElementById("QM9").removeAttribute("hidden")
+    document.getElementById("O9").setAttribute("hidden", "hidden")
+    document.getElementById("X9").setAttribute("hidden", "hidden")
+}
+</script>
+</html>
