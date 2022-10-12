@@ -157,22 +157,61 @@ select{
     </div>
 
     <div class="grid-container">
-        <button id="button1" class="grid-item piece" onclick="button1click()"></button>
-        <button id="button2" class="grid-item piece" onclick="button2click()"></button>
-        <button id="button3" class="grid-item piece" onclick="button3click()"></button>
-        <button id="button4" class="grid-item piece" onclick="button4click()"></button>
-        <button id="button5" class="grid-item piece" onclick="button5click()"></button>
-        <button id="button6" class="grid-item piece" onclick="button6click()"></button>
-        <button id="button7" class="grid-item piece" onclick="button7click()"></button>
-        <button id="button8" class="grid-item piece" onclick="button8click()"></button>
-        <button id="button9" class="grid-item piece" onclick="button9click()"></button>
+        <button id="button1" class="grid-item piece" onclick="handleAnyButtonClick(1)"></button>
+        <button id="button2" class="grid-item piece" onclick="handleAnyButtonClick(2)"></button>
+        <button id="button3" class="grid-item piece" onclick="handleAnyButtonClick(3)"></button>
+        <button id="button4" class="grid-item piece" onclick="handleAnyButtonClick(4)"></button>
+        <button id="button5" class="grid-item piece" onclick="handleAnyButtonClick(5)"></button>
+        <button id="button6" class="grid-item piece" onclick="handleAnyButtonClick(6)"></button>
+        <button id="button7" class="grid-item piece" onclick="handleAnyButtonClick(7)"></button>
+        <button id="button8" class="grid-item piece" onclick="handleAnyButtonClick(8)"></button>
+        <button id="button9" class="grid-item piece" onclick="handleAnyButtonClick(9)"></button>
     </div>
 </div>
     
 </body>
 <script>
 // JavaScript functions go here
-function button1click() {
+function handleAnyButtonClick(theID) {
+    var turn = "O"
+    if (Turn.staticMethod() % 2 === 0) {
+        turn = "X"
+    }
+    else {
+        turn = "O"
+    }
+    var btnID = theID
+    switch(theID) {
+        case 1: 
+            button1click(turn);
+            break;
+        case 2:
+            button2click(turn);
+            break;
+        case 3:
+            button3click(turn);
+            break;
+        case 4:
+            button4click(turn);
+            break;
+        case 5:
+            button5click(turn);
+            break;
+        case 6:
+            button6click(turn);
+            break;
+        case 7:
+            button7click(turn);
+            break;
+        case 8:
+            button8click(turn);
+            break;
+        case 9:
+            button9click(turn);
+    }
+}
+
+function button1click(turn) {
     var qm = document.getElementById("QM1")
     var  o = document.getElementById("O1")
     var  x = document.getElementById("X1")
@@ -354,6 +393,15 @@ function resetBoard() {
     document.getElementById("QM9").removeAttribute("hidden")
     document.getElementById("O9").setAttribute("hidden", "hidden")
     document.getElementById("X9").setAttribute("hidden", "hidden")
+}
+
+class Turn {
+    static staticVar = 0;
+
+    static staticMethod() {
+        this.staticVar++;
+        return this.staticVar;
+    }
 }
 </script>
 </html>
