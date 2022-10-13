@@ -26,6 +26,9 @@ select{
     display: flex;
     justify-content: center;
 }
+.flexRow img{
+    margin: 0 10px;
+}
 .grid-container-container{
     /* border: 1px solid red !important; */
     display: flex;
@@ -64,7 +67,9 @@ select{
 <body>
     <!-- Main body elements -->
 <div class="flexRow buttonRow">
+    <img id="player1" src="https://static.wixstatic.com/media/5a3c7a_6735dea7eb54466291b97de75eb9eb32~mv2.png">
     <button class="resetButton" onclick="resetBoard()">Reset Board</button>
+    <img id="player2" src="https://static.wixstatic.com/media/5a3c7a_6ee1dce3aacb451a94a200d21a7a4c7e~mv2.png">
 </div>
 <div class="grid-container-container">
     <div class="grid-container">
@@ -173,13 +178,20 @@ select{
 <script>
 // JavaScript functions go here
 function handleAnyButtonClick(theID) {
+    var p1 = document.getElementById("player1")
+    var p2 = document.getElementById("player2")
     var turn = "O"
     if (Turn.staticMethod() % 2 === 0) {
         turn = "X"
+        p1.setAttribute("src", "https://static.wixstatic.com/media/5a3c7a_6735dea7eb54466291b97de75eb9eb32~mv2.png")
+        p2.setAttribute("src", "https://static.wixstatic.com/media/5a3c7a_6ee1dce3aacb451a94a200d21a7a4c7e~mv2.png")
     }
     else {
         turn = "O"
+        p1.setAttribute("src", "https://static.wixstatic.com/media/5a3c7a_b9cbb86e8269436ebb9506a66f5d1890~mv2.png")
+        p2.setAttribute("src", "https://static.wixstatic.com/media/5a3c7a_3cf704069e0747e9a0dd4bbe01260288~mv2.png")
     }
+
     var btnID = theID
     switch(theID) {
         case 1: 
