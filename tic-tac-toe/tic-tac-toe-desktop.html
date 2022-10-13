@@ -157,172 +157,185 @@ select{
     </div>
 
     <div class="grid-container">
-        <button id="button1" class="grid-item piece" onclick="button1click()"></button>
-        <button id="button2" class="grid-item piece" onclick="button2click()"></button>
-        <button id="button3" class="grid-item piece" onclick="button3click()"></button>
-        <button id="button4" class="grid-item piece" onclick="button4click()"></button>
-        <button id="button5" class="grid-item piece" onclick="button5click()"></button>
-        <button id="button6" class="grid-item piece" onclick="button6click()"></button>
-        <button id="button7" class="grid-item piece" onclick="button7click()"></button>
-        <button id="button8" class="grid-item piece" onclick="button8click()"></button>
-        <button id="button9" class="grid-item piece" onclick="button9click()"></button>
+        <button id="button1" class="grid-item piece" onclick="handleAnyButtonClick(1)"></button>
+        <button id="button2" class="grid-item piece" onclick="handleAnyButtonClick(2)"></button>
+        <button id="button3" class="grid-item piece" onclick="handleAnyButtonClick(3)"></button>
+        <button id="button4" class="grid-item piece" onclick="handleAnyButtonClick(4)"></button>
+        <button id="button5" class="grid-item piece" onclick="handleAnyButtonClick(5)"></button>
+        <button id="button6" class="grid-item piece" onclick="handleAnyButtonClick(6)"></button>
+        <button id="button7" class="grid-item piece" onclick="handleAnyButtonClick(7)"></button>
+        <button id="button8" class="grid-item piece" onclick="handleAnyButtonClick(8)"></button>
+        <button id="button9" class="grid-item piece" onclick="handleAnyButtonClick(9)"></button>
     </div>
 </div>
     
 </body>
 <script>
 // JavaScript functions go here
-function button1click() {
+function handleAnyButtonClick(theID) {
+    var turn = "O"
+    if (Turn.staticMethod() % 2 === 0) {
+        turn = "X"
+    }
+    else {
+        turn = "O"
+    }
+    var btnID = theID
+    switch(theID) {
+        case 1: 
+            button1click(turn);
+            break;
+        case 2:
+            button2click(turn);
+            break;
+        case 3:
+            button3click(turn);
+            break;
+        case 4:
+            button4click(turn);
+            break;
+        case 5:
+            button5click(turn);
+            break;
+        case 6:
+            button6click(turn);
+            break;
+        case 7:
+            button7click(turn);
+            break;
+        case 8:
+            button8click(turn);
+            break;
+        case 9:
+            button9click(turn);
+    }
+}
+
+function button1click(turn) {
     var qm = document.getElementById("QM1")
     var  o = document.getElementById("O1")
     var  x = document.getElementById("X1")
-    if (!qm.hidden) {
-        qm.setAttribute("hidden", "hidden")
+
+    qm.setAttribute("hidden", "hidden")
+    if (turn === "O") {
         o.removeAttribute("hidden")
+        x.setAttribute("hidden", "hidden")
     }
-    else if (!o.hidden) {
+    else {
         o.setAttribute("hidden", "hidden")
         x.removeAttribute("hidden")
     }
-    else if (!x.hidden) {
-        x.setAttribute("hidden", "hidden")
-        qm.removeAttribute("hidden")
-    }
 }
-function button2click() {
+function button2click(turn) {
     var qm = document.getElementById("QM2")
     var  o = document.getElementById("O2")
     var  x = document.getElementById("X2")
-    if (!qm.hidden) {
-        qm.setAttribute("hidden", "hidden")
+    qm.setAttribute("hidden", "hidden")
+    if (turn === "O") {
         o.removeAttribute("hidden")
+        x.setAttribute("hidden", "hidden")
     }
-    else if (!o.hidden) {
+    else {
         o.setAttribute("hidden", "hidden")
         x.removeAttribute("hidden")
     }
-    else if (!x.hidden) {
-        x.setAttribute("hidden", "hidden")
-        qm.removeAttribute("hidden")
-    }
 }
-function button3click() {
+function button3click(turn) {
     var qm = document.getElementById("QM3")
     var  o = document.getElementById("O3")
     var  x = document.getElementById("X3")
-    if (!qm.hidden) {
-        qm.setAttribute("hidden", "hidden")
+    qm.setAttribute("hidden", "hidden")
+    if (turn === "O") {
         o.removeAttribute("hidden")
+        x.setAttribute("hidden", "hidden")
     }
-    else if (!o.hidden) {
+    else {
         o.setAttribute("hidden", "hidden")
         x.removeAttribute("hidden")
     }
-    else if (!x.hidden) {
-        x.setAttribute("hidden", "hidden")
-        qm.removeAttribute("hidden")
-    }
 }
-function button4click() {
+function button4click(turn) {
     var qm = document.getElementById("QM4")
     var  o = document.getElementById("O4")
     var  x = document.getElementById("X4")
-    if (!qm.hidden) {
-        qm.setAttribute("hidden", "hidden")
+    qm.setAttribute("hidden", "hidden")
+    if (turn === "O") {
         o.removeAttribute("hidden")
+        x.setAttribute("hidden", "hidden")
     }
-    else if (!o.hidden) {
+    else {
         o.setAttribute("hidden", "hidden")
         x.removeAttribute("hidden")
     }
-    else if (!x.hidden) {
-        x.setAttribute("hidden", "hidden")
-        qm.removeAttribute("hidden")
-    }
 }
-function button5click() {
+function button5click(turn) {
     var qm = document.getElementById("QM5")
     var  o = document.getElementById("O5")
     var  x = document.getElementById("X5")
-    if (!qm.hidden) {
-        qm.setAttribute("hidden", "hidden")
+    qm.setAttribute("hidden", "hidden")
+    if (turn === "O") {
         o.removeAttribute("hidden")
+        x.setAttribute("hidden", "hidden")
     }
-    else if (!o.hidden) {
+    else {
         o.setAttribute("hidden", "hidden")
         x.removeAttribute("hidden")
     }
-    else if (!x.hidden) {
-        x.setAttribute("hidden", "hidden")
-        qm.removeAttribute("hidden")
-    }
 }
-function button6click() {
+function button6click(turn) {
     var qm = document.getElementById("QM6")
     var  o = document.getElementById("O6")
     var  x = document.getElementById("X6")
-    if (!qm.hidden) {
-        qm.setAttribute("hidden", "hidden")
+    qm.setAttribute("hidden", "hidden")
+    if (turn === "O") {
         o.removeAttribute("hidden")
+        x.setAttribute("hidden", "hidden")
     }
-    else if (!o.hidden) {
+    else {
         o.setAttribute("hidden", "hidden")
         x.removeAttribute("hidden")
     }
-    else if (!x.hidden) {
-        x.setAttribute("hidden", "hidden")
-        qm.removeAttribute("hidden")
-    }
 }
-function button7click() {
+function button7click(turn) {
     var qm = document.getElementById("QM7")
     var  o = document.getElementById("O7")
     var  x = document.getElementById("X7")
-    if (!qm.hidden) {
-        qm.setAttribute("hidden", "hidden")
+    qm.setAttribute("hidden", "hidden")
+    if (turn === "O") {
         o.removeAttribute("hidden")
+        x.setAttribute("hidden", "hidden")
     }
-    else if (!o.hidden) {
+    else {
         o.setAttribute("hidden", "hidden")
         x.removeAttribute("hidden")
     }
-    else if (!x.hidden) {
-        x.setAttribute("hidden", "hidden")
-        qm.removeAttribute("hidden")
-    }
 }
-function button8click() {
+function button8click(turn) {
     var qm = document.getElementById("QM8")
     var  o = document.getElementById("O8")
     var  x = document.getElementById("X8")
-    if (!qm.hidden) {
-        qm.setAttribute("hidden", "hidden")
+    qm.setAttribute("hidden", "hidden")
+    if (turn === "O") {
         o.removeAttribute("hidden")
+        x.setAttribute("hidden", "hidden")
     }
-    else if (!o.hidden) {
+    else {
         o.setAttribute("hidden", "hidden")
         x.removeAttribute("hidden")
     }
-    else if (!x.hidden) {
-        x.setAttribute("hidden", "hidden")
-        qm.removeAttribute("hidden")
-    }
 }
-function button9click() {
+function button9click(turn) {
     var qm = document.getElementById("QM9")
     var  o = document.getElementById("O9")
     var  x = document.getElementById("X9")
-    if (!qm.hidden) {
-        qm.setAttribute("hidden", "hidden")
+    qm.setAttribute("hidden", "hidden")
+    if (turn === "O") {
         o.removeAttribute("hidden")
+        x.setAttribute("hidden", "hidden")
     }
-    else if (!o.hidden) {
+    else {
         o.setAttribute("hidden", "hidden")
         x.removeAttribute("hidden")
-    }
-    else if (!x.hidden) {
-        x.setAttribute("hidden", "hidden")
-        qm.removeAttribute("hidden")
     }
 }
 
@@ -354,6 +367,15 @@ function resetBoard() {
     document.getElementById("QM9").removeAttribute("hidden")
     document.getElementById("O9").setAttribute("hidden", "hidden")
     document.getElementById("X9").setAttribute("hidden", "hidden")
+}
+
+class Turn {
+    static staticVar = 0;
+
+    static staticMethod() {
+        this.staticVar++;
+        return this.staticVar;
+    }
 }
 </script>
 </html>
