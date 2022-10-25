@@ -1,5 +1,5 @@
 # Mini Games
-A collection of mini-games for [Game Day Companion](https://www.gamedaycompanion.com)
+A collection of mini-games for <a href="https://www.gamedaycompanion.com/" target="_blank">Game Day Companion</a>
 
 ## Current List of Games:
 * Tic-Tac-Toe
